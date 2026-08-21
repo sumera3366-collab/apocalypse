@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You ✨</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: white;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================
+   STEP 1 - INTRO
+========================= */
+
+#introScreen {
+    display: flex;
+    background: #000;
+    z-index: 10;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glow-text {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: normal;
+    letter-spacing: 3px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.7),
+        0 0 25px rgba(255,255,255,0.35);
+
+    animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+
+    from {
+        opacity: 0.75;
+        text-shadow:
+            0 0 8px rgba(255,255,255,0.5),
+            0 0 18px rgba(255,255,255,0.2);
+    }
+
+    to {
+        opacity: 1;
+        text-shadow:
+            0 0 15px rgba(255,255,255,0.9),
+            0 0 35px rgba(255,255,255,0.5);
+    }
+}
+
+.main-button {
+    margin-top: 45px;
+
+    padding: 14px 42px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    background: transparent;
+
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 1rem;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.main-button:hover {
+
+    background: white;
+
+    color: black;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+#fireworksCanvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #000;
+
+    z-index: 20;
+
+    display: none;
+
+    opacity: 1;
+
+    transition: opacity 2s ease;
+}
+
+
+/* =========================
+   STEP 2
+========================= */
+
+#step2 {
+
+    background: #000;
+
+    z-index: 30;
+}
+
+.step2-content {
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.step2-content.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   VINTAGE BACKGROUNDS
+========================= */
+
+.vintage-one {
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 224, 160, 0.55),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(102, 58, 25, 0.35),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            #9b693d,
+            #c9985c,
+            #e3bf7c,
+            #a86f3d
+        );
+}
+
+.vintage-two {
+
+    background:
+
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(255, 220, 150, 0.4),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(72, 48, 40, 0.45),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #5d4037,
+            #8b6b52,
+            #c39b6b,
+            #7b5545
+        );
+}
+
+
+/* =========================
+   STEP 3
+========================= */
+
+#step3 {
+
+    z-index: 40;
+
+    opacity: 0;
+
+    transition: opacity 2s ease;
+}
+
+#step3.show {
+
+    display: flex;
+
+    opacity: 1;
+}
+
+.messages-container {
+
+    width: min(850px, 88vw);
+
+    height: 80vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    gap: 18px;
+
+    padding: 30px 10px;
+
+    overflow: hidden;
+}
+
+.message {
+
+    color: #352012;
+
+    font-size: clamp(1.05rem, 2.2vw, 1.55rem);
+
+    line-height: 1.6;
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    text-shadow:
+        0 1px 8px rgba(255,255,255,0.2);
+}
+
+.message.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.message.final-message {
+
+    font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+
+    font-style: italic;
+}
+
+
+/* =========================
+   STEP 4
+========================= */
+
+#step4 {
+
+    z-index: 50;
+
+    opacity: 0;
+
+    transition: opacity 2s ease;
+}
+
+#step4.show {
+
+    display: flex;
+
+    opacity: 1;
+}
+
+.step4-content {
+
+    width: min(900px, 90vw);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.right-moment {
+
+    color: #fff4d6;
+
+    font-size: clamp(2rem, 5vw, 4rem);
+
+    line-height: 1.35;
+
+    text-shadow:
+        0 2px 18px rgba(0,0,0,0.55);
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+.right-moment.show {
+
+    opacity: 1;
+}
+
+.album-area {
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-top: 15px;
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+.album-area.show {
+
+    display: flex;
+
+    opacity: 1;
+}
+
+.album-cover {
+
+    width: min(260px, 65vw);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.45);
+
+    animation: boatFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes boatFloat {
+
+    0% {
+        transform:
+            rotate(-2deg)
+            translateY(0px);
+    }
+
+    50% {
+        transform:
+            rotate(2deg)
+            translateY(-10px);
+    }
+
+    100% {
+        transform:
+            rotate(-2deg)
+            translateY(0px);
+    }
+}
+
+.lyrics {
+
+    margin-top: 25px;
+
+    max-width: 700px;
+
+    color: #fff7e6;
+
+    font-size: clamp(0.95rem, 2vw, 1.3rem);
+
+    line-height: 1.65;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.6);
+}
+
+.lyric-line {
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+    margin: 5px 0;
+}
+
+.lyric-line.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   STEP 5
+========================= */
+
+#step5 {
+
+    z-index: 60;
+
+    opacity: 0;
+
+    transition: opacity 2s ease;
+}
+
+#step5.show {
+
+    display: flex;
+
+    opacity: 1;
+}
+
+.step5-content {
+
+    width: min(850px, 88vw);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.while-here {
+
+    color: #fff1cf;
+
+    font-size: clamp(1.8rem, 4vw, 3.3rem);
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,0.45);
+}
+
+.paragraph {
+
+    display: none;
+
+    max-width: 780px;
+
+    color: #fff4de;
+
+    font-size: clamp(1rem, 2vw, 1.35rem);
+
+    line-height: 1.8;
+
+    text-align: left;
+
+    opacity: 0;
+
+    transition: opacity 2s ease;
+
+    text-shadow:
+        0 2px 12px rgba(0,0,0,0.5);
+}
+
+
+/* =========================
+   FINAL FADE
+========================= */
+
+#finalFade {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: black;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 4s ease;
+}
+
+#finalFade.show {
+
+    opacity: 1;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     STEP 1
+========================= -->
+
+<section
+id="introScreen"
+class="screen">
+
+    <div class="intro-content">
+
+        <h1 class="glow-text">
+            DON'T BLINK
+        </h1>
+
+        <button
+        id="readyBtn"
+        class="main-button">
+
+            READY
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FIREWORKS
+========================= -->
+
+<canvas
+id="fireworksCanvas">
+</canvas>
+
+
+<!-- =========================
+     STEP 2
+========================= -->
+
+<section
+id="step2"
+class="screen">
+
+    <div
+    id="step2Content"
+    class="step2-content">
+
+        <h1 class="glow-text">
+            Now let's do this your way
+        </h1>
+
+        <button
+        id="okayBtn"
+        class="main-button">
+
+            OKAY
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STEP 3
+========================= -->
+
+<section
+id="step3"
+class="screen vintage-one">
+
+    <div
+    class="messages-container">
+
+        <div
+        id="message1"
+        class="message">
+
+            Happy Birthday. I hope you know you're worth celebrating.
+
+        </div>
+
+
+        <div
+        id="message2"
+        class="message">
+
+            I'm genuinely glad that somewhere along the way,
+            our paths crossed.
+
+        </div>
+
+
+        <div
+        id="message3"
+        class="message">
+
+            I don't know what exactly this little corner of my life
+            would look like without you, and honestly,
+            I don't want to find out. I love you.
+
+        </div>
+
+
+        <div
+        id="message4"
+        class="message final-message">
+
+            I didn’t know I needed a person like you
+            until you became one of mine.
+
+            <br><br>
+
+            And whatever this is,
+            I’d never want less of it.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STEP 4
+========================= -->
+
+<section
+id="step4"
+class="screen vintage-two">
+
+    <div class="step4-content">
+
+
+        <div
+        id="rightMoment"
+        class="right-moment">
+
+            Some songs are better when they're played
+            at just the right moment.
+
+        </div>
+
+
+        <div
+        id="albumArea"
+        class="album-area">
+
+
+            <img
+            src="album-cover.jpg"
+            class="album-cover"
+            id="albumCover">
+
+
+            <div
+            id="lyrics"
+            class="lyrics">
+
+                <div class="lyric-line">
+                    She took my fingers to her mouth
+                </div>
+
+                <div class="lyric-line">
+                    The kind of thing that makes you proud
+                </div>
+
+                <div class="lyric-line">
+                    That nothing else had ever
+                </div>
+
+                <div class="lyric-line">
+                    Worked out, worked out
+                </div>
+
+                <div class="lyric-line">
+                    And maybe I tried other things
+                </div>
+
+                <div class="lyric-line">
+                    But nothing can capture the sting
+                </div>
+
+                <div class="lyric-line">
+                    Of the venom she's gonna spit out right now
+                </div>
+
+                <div class="lyric-line">
+                    Oh, won't you kiss me on the mouth
+                    and love me like a sailor?
+                </div>
+
+                <div class="lyric-line">
+                    When you get a taste,
+                    can you tell me what's my flavor?
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STEP 5
+========================= -->
+
+<section
+id="step5"
+class="screen vintage-two">
+
+    <div class="step5-content">
+
+        <div
+        id="whileHere"
+        class="while-here">
+
+            And while we're here...
+
+        </div>
+
+
+        <div
+        id="paragraph"
+        class="paragraph">
+
+            <p>
+
+                I don't really know how everyone else feels about your
+                birthday, and honestly, I don't even know if I'd get to
+                call myself one of your closest people. But I do know that
+                I've been quietly excited about this day. Maybe because,
+                somewhere along the way, your birthday became a date I found
+                myself looking forward to.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                There’s something strangely lovely about being excited for
+                a day that isn’t even yours. Watching it get closer, knowing
+                midnight is waiting somewhere ahead, and thinking about all
+                the little ways you could make someone feel a little more
+                celebrated. So here I am, not close enough to celebrate
+                beside you, but excited enough to celebrate you anyway....
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<audio
+id="fireworksMusic"
+src="preview.mp3"
+preload="auto">
+</audio>
+
+
+<audio
+id="goldenBrown"
+src="golden-brown.mp3"
+preload="auto">
+</audio>
+
+
+<audio
+id="sailorSong"
+src="sailor-song.mp3"
+preload="auto">
+</audio>
+
+
+<div id="finalFade"></div>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const readyBtn =
+    document.getElementById("readyBtn");
+
+const okayBtn =
+    document.getElementById("okayBtn");
+
+const introScreen =
+    document.getElementById("introScreen");
+
+const step2 =
+    document.getElementById("step2");
+
+const step2Content =
+    document.getElementById("step2Content");
+
+const step3 =
+    document.getElementById("step3");
+
+const step4 =
+    document.getElementById("step4");
+
+const step5 =
+    document.getElementById("step5");
+
+const rightMoment =
+    document.getElementById("rightMoment");
+
+const albumArea =
+    document.getElementById("albumArea");
+
+const albumCover =
+    document.getElementById("albumCover");
+
+const whileHere =
+    document.getElementById("whileHere");
+
+const paragraph =
+    document.getElementById("paragraph");
+
+const finalFade =
+    document.getElementById("finalFade");
+
+
+/* =========================
+   AUDIO
+========================= */
+
+const fireworksMusic =
+    document.getElementById("fireworksMusic");
+
+const goldenBrown =
+    document.getElementById("goldenBrown");
+
+const sailorSong =
+    document.getElementById("sailorSong");
+
+
+/* =========================
+   FIREWORKS CANVAS
+========================= */
+
+const canvas =
+    document.getElementById("fireworksCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let particles = [];
+
+
+function resizeCanvas() {
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+function createExplosion(x, y) {
+
+    const colors = [
+
+        "#ffcc33",
+        "#ff6b6b",
+        "#ffd166",
+        "#ffffff",
+        "#ff9f1c"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 140;
+        i++
+    ) {
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+        const speed =
+            Math.random() * 6 + 2;
+
+
+        particles.push({
+
+            x: x,
+
+            y: y,
+
+            vx:
+                Math.cos(angle) *
+                speed,
+
+            vy:
+                Math.sin(angle) *
+                speed,
+
+            alpha: 1,
+
+            color:
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ],
+
+            size:
+                Math.random() * 3 + 1
+
+        });
+
+    }
+
+}
+
+
+function animateFireworks() {
+
+    ctx.fillStyle =
+        "rgba(0,0,0,0.18)";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    for (
+        let i =
+        particles.length - 1;
+
+        i >= 0;
+
+        i--
+    ) {
+
+        const p =
+            particles[i];
+
+
+        p.x += p.vx;
+
+        p.y += p.vy;
+
+        p.vy += 0.035;
+
+        p.alpha -= 0.012;
+
+
+        ctx.globalAlpha =
+            p.alpha;
+
+        ctx.fillStyle =
+            p.color;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            p.x,
+
+            p.y,
+
+            p.size,
+
+            0,
+
+            Math.PI * 2
+
+        );
+
+        ctx.fill();
+
+
+        if (
+            p.alpha <= 0
+        ) {
+
+            particles.splice(
+                i,
+                1
+            );
+
+        }
+
+    }
+
+
+    ctx.globalAlpha = 1;
+
+    requestAnimationFrame(
+        animateFireworks
+    );
+
+}
+
+animateFireworks();
+
+
+function launchFirework() {
+
+    const x =
+        canvas.width *
+        (
+            0.2 +
+            Math.random() *
+            0.6
+        );
+
+
+    const y =
+        canvas.height *
+        (
+            0.18 +
+            Math.random() *
+            0.45
+        );
+
+
+    createExplosion(x, y);
+
+}
+
+
+/* =========================
+   AUDIO FADE IN
+========================= */
+
+function fadeInAudio(
+    audio,
+    duration
+) {
+
+    audio.volume = 0;
+
+    audio.play().catch(() => {});
+
+    const steps = 40;
+
+    const intervalTime =
+        duration / steps;
+
+    const volumeStep =
+        1 / steps;
+
+
+    let currentStep = 0;
+
+
+    const fadeInterval =
+        setInterval(() => {
+
+            currentStep++;
+
+            audio.volume =
+                Math.min(
+                    currentStep *
+                    volumeStep,
+                    1
+                );
+
+
+            if (
+                currentStep >=
+                steps
+            ) {
+
+                clearInterval(
+                    fadeInterval
+                );
+
+            }
+
+        },
+        intervalTime
+    );
+
+}
+
+
+/* =========================
+   AUDIO FADE OUT
+========================= */
+
+function fadeOutAudio(
+    audio,
+    duration
+) {
+
+    const steps = 40;
+
+    const intervalTime =
+        duration / steps;
+
+    const startingVolume =
+        audio.volume;
+
+    const volumeStep =
+        startingVolume / steps;
+
+
+    let currentStep = 0;
+
+
+    const fadeInterval =
+        setInterval(() => {
+
+            currentStep++;
+
+            audio.volume =
+                Math.max(
+                    startingVolume -
+                    (
+                        currentStep *
+                        volumeStep
+                    ),
+                    0
+                );
+
+
+            if (
+                currentStep >=
+                steps
+            ) {
+
+                clearInterval(
+                    fadeInterval
+                );
+
+                audio.pause();
+
+            }
+
+        },
+        intervalTime
+    );
+
+}
+
+
+/* =========================
+   STEP 1
+========================= */
+
+function startStep1() {
+
+    introScreen.style.display =
+        "none";
+
+
+    canvas.style.display =
+        "block";
+
+    canvas.style.opacity =
+        "1";
+
+
+    fireworksMusic.currentTime =
+        0;
+
+    fireworksMusic.volume =
+        1;
+
+    fireworksMusic.play().catch(() => {});
+
+
+    /*
+    FIRST FIREWORK
+    AFTER 1 SECOND
+    */
+
+    setTimeout(() => {
+
+        let count = 0;
+
+
+        launchFirework();
+
+        count++;
+
+
+        /*
+        TOTAL 6
+        GAP 2 SECONDS
+        */
+
+        const interval =
+            setInterval(() => {
+
+                launchFirework();
+
+                count++;
+
+
+                if (
+                    count >= 6
+                ) {
+
+                    clearInterval(
+                        interval
+                    );
+
+                }
+
+            },
+            2000
+        );
+
+
+    },
+    1000
+    );
+
+
+    /*
+    STEP 2
+    AFTER FIREWORK SEQUENCE
+    */
+
+    setTimeout(() => {
+
+        canvas.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            canvas.style.display =
+                "none";
+
+            step2.style.display =
+                "flex";
+
+
+            setTimeout(() => {
+
+                step2Content.classList.add(
+                    "show"
+                );
+
+            },
+            100
+            );
+
+        },
+        2000
+        );
+
+    },
+    13000
+    );
+
+}
+
+
+/* =========================
+   STEP 3
+========================= */
+
+function startStep3() {
+
+    step2Content.classList.remove(
+        "show"
+    );
+
+
+    setTimeout(() => {
+
+        step2.style.display =
+            "none";
+
+        step3.style.display =
+            "flex";
+
+
+        setTimeout(() => {
+
+            step3.classList.add(
+                "show"
+            );
+
+        },
+        50
+        );
+
+
+        /*
+        GOLDEN BROWN
+        21 SECONDS
+        FADE IN 2 SECONDS
+        */
+
+        goldenBrown.currentTime =
+            0;
+
+        fadeInAudio(
+            goldenBrown,
+            2000
+        );
+
+
+        /*
+        MESSAGE TIMING
+        ACROSS 21 SECONDS
+        */
+
+        setTimeout(() => {
+
+            document
+                .getElementById(
+                    "message1"
+                )
+                .classList
+                .add("show");
+
+        },
+        2500
+        );
+
+
+        setTimeout(() => {
+
+            document
+                .getElementById(
+                    "message2"
+                )
+                .classList
+                .add("show");
+
+        },
+        6500
+        );
+
+
+        setTimeout(() => {
+
+            document
+                .getElementById(
+                    "message3"
+                )
+                .classList
+                .add("show");
+
+        },
+        10500
+        );
+
+
+        setTimeout(() => {
+
+            document
+                .getElementById(
+                    "message4"
+                )
+                .classList
+                .add("show");
+
+        },
+        14500
+        );
+
+
+        /*
+        FADE MUSIC OUT
+        LAST 3 SECONDS
+        */
+
+        setTimeout(() => {
+
+            fadeOutAudio(
+                goldenBrown,
+                3000
+            );
+
+        },
+        18000
+        );
+
+
+        /*
+        MOVE TO STEP 4
+        */
+
+        setTimeout(() => {
+
+            startStep4();
+
+        },
+        21500
+        );
+
+
+    },
+    500
+    );
+
+}
+
+
+/* =========================
+   STEP 4
+========================= */
+
+function startStep4() {
+
+    step3.classList.remove(
+        "show"
+    );
+
+
+    setTimeout(() => {
+
+        step3.style.display =
+            "none";
+
+        step4.style.display =
+            "flex";
+
+
+        setTimeout(() => {
+
+            step4.classList.add(
+                "show"
+            );
+
+        },
+        50
+        );
+
+
+        /*
+        SAILOR SONG
+        STARTS NOW
+        FADE IN
+        */
+
+        sailorSong.currentTime =
+            0;
+
+        fadeInAudio(
+            sailorSong,
+            2000
+        );
+
+
+        /*
+        RIGHT MOMENT TEXT
+        */
+
+        setTimeout(() => {
+
+            rightMoment.classList.add(
+                "show"
+            );
+
+        },
+        300
+        );
+
+
+        /*
+        TEXT FADES
+        */
+
+        setTimeout(() => {
+
+            rightMoment.style.opacity =
+                "0";
+
+        },
+        3500
+        );
+
+
+        /*
+        SHOW ALBUM
+        */
+
+        setTimeout(() => {
+
+            rightMoment.style.display =
+                "none";
+
+            albumArea.classList.add(
+                "show"
+            );
+
+            showLyrics();
+
+        },
+        5000
+        );
+
+
+        /*
+        STEP 5
+        AT ABOUT 55 SECONDS
+        */
+
+        setTimeout(() => {
+
+            startStep5();
+
+        },
+        55000
+        );
+
+
+    },
+    1500
+    );
+
+}
+
+
+/* =========================
+   LYRICS
+   TIMED GRADUALLY
+========================= */
+
+function showLyrics() {
+
+    const lines =
+        document.querySelectorAll(
+            ".lyric-line"
+        );
+
+
+    /*
+    Lyrics begin after
+    album appears.
+
+    Timing spread so they
+    gradually arrive across
+    the chosen section.
+    */
+
+    const timings = [
+
+        0,
+        4200,
+        8500,
+        12500,
+        17500,
+        22500,
+        27500,
+        33500,
+        43000
+
+    ];
+
+
+    lines.forEach(
+        (
+            line,
+            index
+        ) => {
+
+            setTimeout(() => {
+
+                line.classList.add(
+                    "show"
+                );
+
+            },
+            timings[index]
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   STEP 5
+========================= */
+
+function startStep5() {
+
+    /*
+    MUSIC CONTINUES
+    LOWER THE VOLUME
+    */
+
+    fadeAudioToVolume(
+        sailorSong,
+        0.25,
+        3000
+    );
+
+
+    /*
+    LYRICS FADE
+    */
+
+    document
+        .getElementById("lyrics")
+        .style.opacity =
+        "0";
+
+
+    document
+        .getElementById("lyrics")
+        .style.transition =
+        "opacity 3s ease";
+
+
+    /*
+    ALBUM SHRINKS
+    AND FADES
+    */
+
+    albumCover.style.transition =
+        "transform 4s ease, opacity 4s ease";
+
+    albumCover.style.transform =
+        "scale(0.45)";
+
+    albumCover.style.opacity =
+        "0";
+
+
+    /*
+    STEP 5 BACKGROUND
+    APPEARS
+    */
+
+    setTimeout(() => {
+
+        step4.classList.remove(
+            "show"
+        );
+
+
+        step5.style.display =
+            "flex";
+
+
+        setTimeout(() => {
+
+            step5.classList.add(
+                "show"
+            );
+
+        },
+        50
+        );
+
+
+    },
+    3500
+    );
+
+
+    /*
+    AND WHILE WE'RE HERE
+    */
+
+    setTimeout(() => {
+
+        whileHere.style.opacity =
+            "1";
+
+    },
+    5000
+    );
+
+
+    /*
+    PAUSE THEN FADE
+    */
+
+    setTimeout(() => {
+
+        whileHere.style.opacity =
+            "0";
+
+    },
+    9000
+    );
+
+
+    /*
+    SHOW PARAGRAPH
+    */
+
+    setTimeout(() => {
+
+        whileHere.style.display =
+            "none";
+
+        paragraph.style.display =
+            "block";
+
+
+        setTimeout(() => {
+
+            paragraph.style.opacity =
+                "1";
+
+        },
+        100
+        );
+
+    },
+    11000
+    );
+
+
+    /*
+    NATURAL END
+    SAILOR SONG ENDS
+    THEN SOFT FADE
+    */
+
+    setTimeout(() => {
+
+        finalFade.classList.add(
+            "show"
+        );
+
+    },
+    30000
+    );
+
+}
+
+
+/* =========================
+   FADE TO SPECIFIC VOLUME
+========================= */
+
+function fadeAudioToVolume(
+    audio,
+    targetVolume,
+    duration
+) {
+
+    const steps = 40;
+
+    const intervalTime =
+        duration / steps;
+
+    const startVolume =
+        audio.volume;
+
+    const difference =
+        targetVolume -
+        startVolume;
+
+
+    let currentStep = 0;
+
+
+    const interval =
+        setInterval(() => {
+
+            currentStep++;
+
+            audio.volume =
+                startVolume +
+                (
+                    difference *
+                    (
+                        currentStep /
+                        steps
+                    )
+                );
+
+
+            if (
+                currentStep >=
+                steps
+            ) {
+
+                clearInterval(
+                    interval
+                );
+
+            }
+
+        },
+        intervalTime
+    );
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+readyBtn.addEventListener(
+    "click",
+    startStep1
+);
+
+
+okayBtn.addEventListener(
+    "click",
+    startStep3
+);
+
+</script>
+
+</body>
+</html>
