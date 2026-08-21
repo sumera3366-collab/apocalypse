@@ -29,9 +29,12 @@ body {
 .screen {
     position: fixed;
     inset: 0;
+
     display: none;
+
     justify-content: center;
     align-items: center;
+
     text-align: center;
 }
 
@@ -56,6 +59,7 @@ body {
     font-size: clamp(2.5rem, 7vw, 5rem);
     font-weight: normal;
     letter-spacing: 3px;
+
     color: white;
 
     text-shadow:
@@ -84,21 +88,34 @@ body {
 
 .main-button {
     margin-top: 45px;
+
     padding: 14px 42px;
+
     border-radius: 50px;
+
     border: 1px solid rgba(255,255,255,0.8);
+
     background: transparent;
+
     color: white;
+
     font-family: Georgia, "Times New Roman", serif;
+
     font-size: 1rem;
+
     letter-spacing: 2px;
+
     cursor: pointer;
+
     transition: 0.3s ease;
 }
 
 .main-button:hover {
+
     background: white;
+
     color: black;
+
     transform: scale(1.05);
 }
 
@@ -108,14 +125,23 @@ body {
 ========================= */
 
 #fireworksCanvas {
+
     position: fixed;
+
     inset: 0;
+
     width: 100%;
+
     height: 100%;
+
     background: #000;
+
     z-index: 20;
+
     display: none;
+
     opacity: 1;
+
     transition: opacity 2s ease;
 }
 
@@ -125,12 +151,16 @@ body {
 ========================= */
 
 #step2 {
+
     background: #000;
+
     z-index: 30;
 }
 
 .step2-content {
+
     opacity: 0;
+
     transform: translateY(15px);
 
     transition:
@@ -139,7 +169,9 @@ body {
 }
 
 .step2-content.show {
+
     opacity: 1;
+
     transform: translateY(0);
 }
 
@@ -149,6 +181,7 @@ body {
 ========================= */
 
 .vintage-one {
+
     background:
 
         radial-gradient(
@@ -173,6 +206,7 @@ body {
 }
 
 .vintage-two {
+
     background:
 
         radial-gradient(
@@ -202,30 +236,42 @@ body {
 ========================= */
 
 #step3 {
+
     z-index: 40;
+
     opacity: 0;
+
     transition: opacity 2s ease;
 }
 
 #step3.show {
+
     display: flex;
+
     opacity: 1;
 }
 
 .messages-container {
+
     width: min(850px, 88vw);
+
     height: 80vh;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: flex-end;
 
     gap: 18px;
+
     padding: 30px 10px;
+
     overflow: hidden;
 }
 
 .message {
+
     color: #352012;
 
     font-size: clamp(1.05rem, 2.2vw, 1.55rem);
@@ -245,12 +291,16 @@ body {
 }
 
 .message.show {
+
     opacity: 1;
+
     transform: translateY(0);
 }
 
 .message.final-message {
+
     font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+
     font-style: italic;
 }
 
@@ -260,25 +310,34 @@ body {
 ========================= */
 
 #step4 {
+
     z-index: 50;
+
     opacity: 0;
+
     transition: opacity 2s ease;
 }
 
 #step4.show {
+
     display: flex;
+
     opacity: 1;
 }
 
 .step4-content {
+
     width: min(900px, 90vw);
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
 .right-moment {
+
     color: #fff4d6;
 
     font-size: clamp(2rem, 5vw, 4rem);
@@ -294,13 +353,16 @@ body {
 }
 
 .right-moment.show {
+
     opacity: 1;
 }
 
 .album-area {
+
     display: none;
 
     flex-direction: column;
+
     align-items: center;
 
     margin-top: 15px;
@@ -311,11 +373,14 @@ body {
 }
 
 .album-area.show {
+
     display: flex;
+
     opacity: 1;
 }
 
 .album-cover {
+
     width: min(260px, 65vw);
 
     border-radius: 8px;
@@ -348,6 +413,7 @@ body {
 }
 
 .lyrics {
+
     margin-top: 25px;
 
     max-width: 700px;
@@ -363,6 +429,7 @@ body {
 }
 
 .lyric-line {
+
     opacity: 0;
 
     transform: translateY(10px);
@@ -375,7 +442,9 @@ body {
 }
 
 .lyric-line.show {
+
     opacity: 1;
+
     transform: translateY(0);
 }
 
@@ -385,25 +454,34 @@ body {
 ========================= */
 
 #step5 {
+
     z-index: 60;
+
     opacity: 0;
+
     transition: opacity 2s ease;
 }
 
 #step5.show {
+
     display: flex;
+
     opacity: 1;
 }
 
 .step5-content {
+
     width: min(850px, 88vw);
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
 .while-here {
+
     color: #fff1cf;
 
     font-size: clamp(1.8rem, 4vw, 3.3rem);
@@ -417,6 +495,7 @@ body {
 }
 
 .paragraph {
+
     display: none;
 
     max-width: 780px;
@@ -443,7 +522,9 @@ body {
 ========================= */
 
 #finalFade {
+
     position: fixed;
+
     inset: 0;
 
     background: black;
@@ -458,6 +539,7 @@ body {
 }
 
 #finalFade.show {
+
     opacity: 1;
 }
 
@@ -686,7 +768,6 @@ class="screen vintage-two">
 
     <div class="step5-content">
 
-
         <div
         id="whileHere"
         class="while-here">
@@ -711,9 +792,7 @@ class="screen vintage-two">
 
             </p>
 
-
             <br>
-
 
             <p>
 
@@ -844,6 +923,7 @@ function resizeCanvas() {
 
     canvas.height =
         window.innerHeight;
+
 }
 
 resizeCanvas();
@@ -861,11 +941,13 @@ window.addEventListener(
 function createExplosion(x, y) {
 
     const colors = [
+
         "#ffcc33",
         "#ff6b6b",
         "#ffd166",
         "#ffffff",
         "#ff9f1c"
+
     ];
 
 
@@ -956,6 +1038,7 @@ function animateFireworks() {
         ctx.globalAlpha =
             p.alpha;
 
+
         ctx.fillStyle =
             p.color;
 
@@ -963,11 +1046,17 @@ function animateFireworks() {
         ctx.beginPath();
 
         ctx.arc(
+
             p.x,
+
             p.y,
+
             p.size,
+
             0,
+
             Math.PI * 2
+
         );
 
         ctx.fill();
@@ -1035,7 +1124,6 @@ function fadeInAudio(
     audio.volume = 0;
 
     audio.play().catch(() => {});
-
 
     const steps = 40;
 
@@ -1163,63 +1251,31 @@ function startStep1() {
     fireworksMusic.volume =
         1;
 
-
     /*
-    ==================================
-    MOBILE AUDIO UNLOCK FOR SAILOR
-    ==================================
-
-    The phone browser needs a user
-    interaction before it allows a
-    later audio play.
-
-    READY is that user interaction.
-
-    We briefly start Sailor silently,
-    immediately pause it, and reset it.
-
-    It will NOT be heard here.
-
-    Step 4 will start the actual song.
+    UNLOCK SAILOR AUDIO ON MOBILE
     */
-
     sailorSong.volume = 0;
-
     sailorSong.currentTime = 0;
 
-    sailorSong.play()
-        .then(() => {
+    sailorSong.play().then(() => {
 
-            sailorSong.pause();
+        sailorSong.pause();
 
-            sailorSong.currentTime = 0;
+        sailorSong.currentTime = 0;
 
-        })
-        .catch(() => {});
-
+    }).catch(() => {});
 
     fireworksMusic.play().catch(() => {});
 
-
-    /*
-    FIRST FIREWORK
-    AFTER 1 SECOND
-    */
 
     setTimeout(() => {
 
         let count = 0;
 
-
         launchFirework();
 
         count++;
 
-
-        /*
-        TOTAL 6
-        GAP 2 SECONDS
-        */
 
         const interval =
             setInterval(() => {
@@ -1248,11 +1304,6 @@ function startStep1() {
     1000
     );
 
-
-    /*
-    STEP 2
-    AFTER FIREWORK SEQUENCE
-    */
 
     setTimeout(() => {
 
@@ -1321,12 +1372,6 @@ function startStep3() {
         );
 
 
-        /*
-        GOLDEN BROWN
-        21 SECONDS
-        FADE IN 2 SECONDS
-        */
-
         goldenBrown.currentTime =
             0;
 
@@ -1335,11 +1380,6 @@ function startStep3() {
             2000
         );
 
-
-        /*
-        MESSAGE TIMING
-        ACROSS 21 SECONDS
-        */
 
         setTimeout(() => {
 
@@ -1397,11 +1437,6 @@ function startStep3() {
         );
 
 
-        /*
-        FADE MUSIC OUT
-        LAST 3 SECONDS
-        */
-
         setTimeout(() => {
 
             fadeOutAudio(
@@ -1413,10 +1448,6 @@ function startStep3() {
         18000
         );
 
-
-        /*
-        MOVE TO STEP 4
-        */
 
         setTimeout(() => {
 
@@ -1466,9 +1497,9 @@ function startStep4() {
 
 
         /*
-        SAILOR SONG
-        STARTS NOW
-        FADE IN
+        NEW SAILOR SONG
+        EXACT FILE:
+        sailor-song.mp3
         */
 
         sailorSong.currentTime =
@@ -1479,10 +1510,6 @@ function startStep4() {
             2000
         );
 
-
-        /*
-        RIGHT MOMENT TEXT
-        */
 
         setTimeout(() => {
 
@@ -1495,10 +1522,6 @@ function startStep4() {
         );
 
 
-        /*
-        TEXT FADES
-        */
-
         setTimeout(() => {
 
             rightMoment.style.opacity =
@@ -1510,7 +1533,8 @@ function startStep4() {
 
 
         /*
-        SHOW ALBUM
+        AUDIO 5 SECONDS:
+        ALBUM + "SHE TOOK MY FINGERS..."
         */
 
         setTimeout(() => {
@@ -1530,8 +1554,8 @@ function startStep4() {
 
 
         /*
-        STEP 5
-        AT ABOUT 55 SECONDS
+        AUDIO 55 SECONDS:
+        START STEP 5
         */
 
         setTimeout(() => {
@@ -1552,7 +1576,6 @@ function startStep4() {
 
 /* =========================
    LYRICS
-   TIMED GRADUALLY
 ========================= */
 
 function showLyrics() {
@@ -1564,12 +1587,8 @@ function showLyrics() {
 
 
     /*
-    Lyrics begin after
-    album appears.
-
-    Timing spread so they
-    gradually arrive across
-    the chosen section.
+    Timings begin when album appears
+    at 5 seconds of the audio.
     */
 
     const timings = [
@@ -1615,21 +1634,12 @@ function showLyrics() {
 
 function startStep5() {
 
-    /*
-    MUSIC CONTINUES
-    LOWER THE VOLUME
-    */
-
     fadeAudioToVolume(
         sailorSong,
         0.25,
         3000
     );
 
-
-    /*
-    LYRICS FADE
-    */
 
     document
         .getElementById("lyrics")
@@ -1643,11 +1653,6 @@ function startStep5() {
         "opacity 3s ease";
 
 
-    /*
-    ALBUM SHRINKS
-    AND FADES
-    */
-
     albumCover.style.transition =
         "transform 4s ease, opacity 4s ease";
 
@@ -1657,11 +1662,6 @@ function startStep5() {
     albumCover.style.opacity =
         "0";
 
-
-    /*
-    STEP 5 BACKGROUND
-    APPEARS
-    */
 
     setTimeout(() => {
 
@@ -1690,10 +1690,6 @@ function startStep5() {
     );
 
 
-    /*
-    AND WHILE WE'RE HERE
-    */
-
     setTimeout(() => {
 
         whileHere.style.opacity =
@@ -1704,10 +1700,6 @@ function startStep5() {
     );
 
 
-    /*
-    PAUSE THEN FADE
-    */
-
     setTimeout(() => {
 
         whileHere.style.opacity =
@@ -1717,10 +1709,6 @@ function startStep5() {
     9000
     );
 
-
-    /*
-    SHOW PARAGRAPH
-    */
 
     setTimeout(() => {
 
@@ -1744,12 +1732,6 @@ function startStep5() {
     11000
     );
 
-
-    /*
-    NATURAL END
-    SAILOR SONG ENDS
-    THEN SOFT FADE
-    */
 
     setTimeout(() => {
 
